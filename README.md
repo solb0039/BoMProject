@@ -41,10 +41,10 @@ To stop the server, type 'ctrl-c' from the terminal window.
 
 The accompanying PDF documents in the /Database directory provides details of the schema and prepopulated data, including the pen varieties:
 
-AssemblyId 6: Red, plastic pen.
-AssemblyId 7: Red, metal pen.
-AssemblyId 10: Blue, plastic pen.
-AssemblyId 11: Blue, metal pen.
+##### AssemblyId 6: Red, plastic pen.
+##### AssemblyId 7: Red, metal pen.
+##### AssemblyId 10: Blue, plastic pen.
+##### AssemblyId 11: Blue, metal pen.
 
 Refer to the root page (e.g. http:localhost:5000/) for basic description of the API methods implemented in this project and example usages.
 
