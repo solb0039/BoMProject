@@ -46,5 +46,7 @@ AssemblyId 7: Red, metal pen.
 AssemblyId 10: Blue, plastic pen.
 AssemblyId 11: Blue, metal pen.
 
+Refer to the root page (e.g. http:localhost:5000/) for basic description of the API methods implemented in this project and example usages.
 
-Refer to the root page (e.g. http:localhost:5000/) for basic description of the API methods implemented in this project.
+Following standard REST API practices, GET methods can be accessed as html url queries while POST, PUT, and DELETE methods must be made through
+the request body using an HTTP client such as curl.
