@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sila API</title>
+</head>
+<body>
+    <h2>Bill of Materials API Reference</h2>
+    <ul>
+        <p><b>/list-all-assemblies</b></p>
+        <li>Method: GET</li>
+        <li>Params: None</li>
+        <li>Description: list all assemblies</li>
+
+        <p><b>/assembly/{id}</b></p>
+        <li>Method: GET</li>
+        <li>Params:
+            <ul>
+                <li> id: Part ID</li>
+            </ul>
+        </li>
+        <li>Description: list all parts in a specific assembly (which are not sub-assemblies)</li>
+
+        <p><b>/combine-parts</b></p>
+        <li>Method: POST</li>
+        <li>Params:
+            <ul>
+                <li> PartId1 (Required): First part ID</li>
+                <li> PartId2 (Optional): Second part ID</li>
+                <li> AssemblyName (Required): Name to give to new assembly</li>
+            </ul>
+        </li>
+        <li>Description: add one or more parts as "children" to a "parent" part, which then becomes an assembly</li>
+        <li>Example: curl -d "PartId1=1&PartId2=4&AssemblyName=NewWidget" -X POST http://&lthost&gt:&ltport&gt/combine-parts</li>
+
+        <p><b>/remove-part-assembly</b></p>
+        <li>Method: DELETE</li>
+        <li>Params:
+            <ul>
+                <li> PartId1 (Required): First part ID</li>
+                <li> PartId2 (Optional): Second part ID</li>
+                <li> AssemblyId (Required): Id of assembly to remove part from</li>
+            </ul>
+        </li>
+        <li>Description: remove one or more parts from an assembly</li>
+        <li>Example: curl -d "PartId=1&PartId=2&AssemblyId=1" -X DELETE http://&lthost&gt:&ltport&gt/remove-part-assembly</li>
+
+        <p><b>/assembly-parts/{assembly_id}</b></p>
+        <li>Method: GET</li>
+        <li>Params:
+            <ul>
+                <li> assembly_id: ID of assembly</li>
+            </ul>
+        </li>
+        <li>Description: list all the first-level children of a specific assembly</li>
+
+        <p><b>/get-all-assembly-parts/{assembly_id}</b></p>
+        <li>Method: GET</li>
+        <li>Params:
+            <ul>
+                <li> assembly_id: ID of assembly</li>
+            </ul>
+        </li>
+        <li>Description: list all children of a specific assembly</li>
+
+        <p><b>/top-level-assemblies</b></p>
+        <li>Method: GET</li>
+        <li>Params: None</li>
+        <li>Description: list all top level assemblies (assemblies that are not children of another assembly)</li>
+
+        <p><b>/sub-assemblies</b></p>
+        <li>Method: GET</li>
+        <li>Params: None</li>
+        <li>Description: list all subassemblies (assemblies that are children of another assembly)</li>
+
+        <p><b>/component-parts</b></p>
+        <li>Method: GET</li>
+        <li>Params: None</li>
+        <li>Description: list all component parts (parts that are not subassemblies, but are included in a parent assembly)</li>
+
+        <p><b>/part-in-assemblies/{part_id}</b></p>
+        <li>Method: GET</li>
+        <li>Params:
+            <ul>
+                <li> part_id: ID of part</li>
+            </ul>
+        </li>
+        <li>Description: list all assemblies that contain a specific child part, either directly or indirectly (via a subassembly)</li>
+
+        <p><b>/list-all-parts</b></p>
+        <li>Method: GET</li>
+        <li>Params: None</li>
+        <li>Description: list all parts</li>
+
+        <p><b>/part/{part_id}</b></p>
+        <li>Method: GET</li>
+        <li>Params:
+            <ul>
+                <li> part_id: ID of part</li>
+            </ul>
+        </li>
+        <li>Description: list part by id</li>
+
+
+        <p><b>/add-part</b></p>
+        <li>Method: POST</li>
+        <li>Params:
+            <ul>
+                <li> PartName (Required): Name of part</li>
+                <li> PartDescription (Optional): Description of part</li>
+                <li> PartMaterialType (Optional): Material type</li>
+                <li> PartColor (Optional): Material color</li>
+            </ul>
+        </li>
+        <li>Description: create a new part</li>
+        <li>Example: curl -d "PartName=MyPart&PartDescription=A%20Widget&PartMaterialType=Plastic&PartColor=Brown" -X POST http://&lthost&gt:&ltport&gt/add-part</li>
+
+
+        <p><b>/delete-part</b></p>
+        <li>Method: DELETE</li>
+        <li>Params:
+            <ul>
+                <li> PartId (Required): Id of part</li>
+            </ul>
+        </li>
+        <li>Description: delete a part (thereby also deleting the part from its parent assemblies)</li>
+        <li>Example: curl -d "PartId=1" -X DELETE http://&lthost&gt:&ltport&gt/delete-part</li>
+
+        <p><b>/orphan-parts</b></p>
+        <li>Method: GET</li>
+        <li>Params: None</li>
+        <li>Description: list all orphan parts (parts with neither parents nor children)</li>
+
+        <p><b>/add-assembly-to-assembly</b></p>
+        <li>Method: POST</li>
+        <li>Params:
+            <ul>
+                <li> AssemblyId1 (Required): Child assembly</li>
+                <li> AssemblyId2 (Required): Parent assembly</li>
+            </ul>
+        </li>
+        <li>Description: add child assembly to parent assembly</li>
+        <li>Example: curl -d "AssemblyId1=1&AssemblyId2=2" -X POST http://&lthost&gt:&ltport&gt/add-assembly-to-assembly</li>
+
+    </ul>
+
+
+</body>
+</html>
