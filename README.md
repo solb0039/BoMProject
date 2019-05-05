@@ -5,7 +5,7 @@ JSON-based REST API to create, update, delete and query bills of materials.
 
 ### Installation
 
-Download directory named SilaProject.
+Download project from https://github.com/solb0039/BoMProject.git
 
 Enter directory from a Mac terminal window:
 ```sh
